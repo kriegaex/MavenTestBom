@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.scrum-master.test</groupId>
+  <artifactId>test-bom</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+
+  <name>Test dependency BoM</name>
+  <description>
+    Maven BoM (Bill of Materials) defining dependency versions for
+    JUnit, Spock, Geb, Selenium + web drivers, web driver manager by bonigarcia.
+
+    Please import this artifact with type=pom, scope=import from the dependencyManagement section of your project.
+
+    In order to also get the dependencies themselves plus basic configuration like GebConfig, please also add
+    the dependency de.scrum-master.test:test-resources with scope=test to your project.
+  </description>
+
+  <organization>
+    <name>Scrum-Master.de - Agile Project Management</name>
+    <url>http://scrum-master.de</url>
+  </organization>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!-- Maven Compiler Plugin -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- JUnit, Spock, Geb, Selenium -->
+    <version.junit>4.12</version.junit>
+    <version.spock>1.0-groovy-2.4</version.spock>
+    <version.groovy>2.4.7</version.groovy>
+
+    <!-- Geb, Selenium -->
+    <version.geb>1.1.1</version.geb>
+    <version.selenium>3.0.1</version.selenium>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- JUnit -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${version.junit}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Groovy + Spock -->
+      <dependency>
+        <groupId>org.codehaus.groovy</groupId>
+        <artifactId>groovy-all</artifactId>
+        <scope>test</scope>
+        <version>${version.groovy}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.spockframework</groupId>
+        <artifactId>spock-core</artifactId>
+        <version>${version.spock}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Mock classes (in addition to interfaces) in Spock -->
+      <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib-nodep</artifactId>
+        <version>3.2.0</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Mock final classes and classes without default constructors in Spock -->
+      <dependency>
+        <groupId>org.objenesis</groupId>
+        <artifactId>objenesis</artifactId>
+        <version>2.2</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Geb is used for web UI testing in connection with Spock -->
+      <dependency>
+        <groupId>org.gebish</groupId>
+        <artifactId>geb-spock</artifactId>
+        <version>${version.geb}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.gebish</groupId>
+        <artifactId>geb-core</artifactId>
+        <version>${version.geb}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.gebish</groupId>
+        <artifactId>geb-implicit-assertions</artifactId>
+        <version>${version.geb}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-api</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-support</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.codeborne</groupId>
+        <artifactId>phantomjsdriver</artifactId>
+        <version>1.3.0</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-firefox-driver</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-chrome-driver</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-ie-driver</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-edge-driver</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-opera-driver</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-remote-driver</artifactId>
+        <version>${version.selenium}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.2</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.10</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.5</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.jetty.websocket</groupId>
+        <artifactId>websocket-client</artifactId>
+        <version>9.2.18.v20160721</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>htmlunit-driver</artifactId>
+        <version>2.23.2</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>1.5.1</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
