@@ -12,6 +12,9 @@ Please import this artifact with `type=pom`, `scope=import` from the `dependency
 In order to also get the dependencies themselves plus basic configuration like GebConfig, please also add
 the dependency `de.scrum-master.test:test-resources` with `scope=test` to your project.
 
+See also [this test dependency](https://github.com/kriegaex/MavenTestResources) and
+[this sample project](https://github.com/kriegaex/GebSpockSamples).
+
 Example:
 
 ```xml
