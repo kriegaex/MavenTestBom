@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.scrum-master.test</groupId>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <groupId>de.scrum-master</groupId>
   <artifactId>test-bom</artifactId>
-  <version>1.4</version>
+  <version>1.4.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Test dependency BoM</name>
@@ -16,15 +23,49 @@
     Please import this artifact with type=pom, scope=import from the dependencyManagement section of your project.
 
     In order to also get the dependencies themselves plus basic configuration like GebConfig, please also add
-    the dependency de.scrum-master.test:test-resources with scope=test to your project.
+    the dependency de.scrum-master:test-resources with scope=test to your project.
   </description>
+  <url>https://github.com/kriegaex/MavenTestBom</url>
 
   <organization>
     <name>Scrum-Master.de - Agile Project Management</name>
-    <url>http://scrum-master.de</url>
+    <url>https://scrum-master.de</url>
   </organization>
 
+  <licenses>
+    <license>
+      <name>GNU General Public License (GPL) version 3.0</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Alexander Kriegisch</name>
+      <organization>Scrum-Master.de</organization>
+      <organizationUrl>https://scrum-master.de</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/kriegaex/MavenTestBom</url>
+    <connection>scm:git:https://github.com/kriegaex/MavenTestBom.git</connection>
+    <developerConnection>scm:git:https://github.com/kriegaex/MavenTestBom.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
   <properties>
+    <!-- If you want to build from an IDE like IDEA or Eclipse and use GnuPG version >= v2.0,
+    set the parameter to true in order to get a nice GUI dialog for entering the passphrase.
+    If you want to build from a console, set it to false or override it via -DgpgGuiPassphrase=false. -->
+    <gpgGuiPassphrase>false</gpgGuiPassphrase>
+
+    <!-- If you have multiple GnuPG signing keys on your keyring, the first one is used as the default key.
+    In order to use another one, specify the desired key ID here, otherwise you may just leave the parameter
+    empty or override it via -DgpgKeyId=. It does not hurt to always specify it, though. -->
+    <gpgKeyId>70CC1444</gpgKeyId>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -207,5 +248,55 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.4</version>
+        <configuration>
+          <useAgent>${gpgGuiPassphrase}</useAgent>
+          <keyname>${gpgKeyId}</keyname>
+        </configuration>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.4.1</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
 
 </project>

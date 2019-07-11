@@ -10,7 +10,7 @@ Maven BoM (Bill of Materials) defining dependency versions for
 Please import this artifact with `type=pom`, `scope=import` from the `dependencyManagement` section of your project.
 
 In order to also get the dependencies themselves plus basic configuration like GebConfig, please also add
-the dependency `de.scrum-master.test:test-resources` with `scope=test` to your project.
+the dependency `de.scrum-master:test-resources` with `scope=test` to your project.
 
 See also [this test dependency](https://github.com/kriegaex/MavenTestResources) and
 [this sample project](https://github.com/kriegaex/GebSpockSamples).
@@ -22,9 +22,9 @@ Example:
   <dependencies>
     <!-- BoM with test dependency versions -->
     <dependency>
-      <groupId>de.scrum-master.test</groupId>
+      <groupId>de.scrum-master</groupId>
       <artifactId>test-bom</artifactId>
-      <version>1.4</version>
+      <version>1.4.1</version>
       <type>pom</type>
       <scope>import</scope>
     </dependency>
@@ -32,7 +32,7 @@ Example:
     <dependency>
       <groupId>de.scrum-master</groupId>
       <artifactId>test-resources</artifactId>
-      <version>1.4</version>
+      <version>1.4.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
