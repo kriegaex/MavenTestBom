@@ -238,7 +238,7 @@
       <dependency>
         <groupId>org.eclipse.jetty.websocket</groupId>
         <artifactId>websocket-client</artifactId>
-        <version>9.4.20.v20190813</version>
+        <version>9.4.45.v20220203</version>
       </dependency>
       <dependency>
         <groupId>io.github.bonigarcia</groupId>
