@@ -77,7 +77,7 @@
     <version.groovy>2.5.14</version.groovy>
 
     <!-- Geb, Selenium -->
-    <version.geb>3.0.1</version.geb>
+    <version.geb>5.1</version.geb>
     <version.selenium>3.14.0</version.selenium>
   </properties>
 
