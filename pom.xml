@@ -78,7 +78,7 @@
 
     <!-- Geb, Selenium -->
     <version.geb>3.0.1</version.geb>
-    <version.selenium>3.14.0</version.selenium>
+    <version.selenium>4.1.2</version.selenium>
   </properties>
 
   <dependencyManagement>
